@@ -1,0 +1,311 @@
+%% $Id: istprog.sty,v 1.1 2006/10/17 11:13:53 poller Exp $
+%%			History:
+%%			Tue Dec  4 10:26:29 2001:  CM tweaked to stop tables messing up
+%%			Tue Dec  4 10:35:09 2001:  CM hacked again to fix page height
+%%			Tue Nov  16         2004:  OL various changes for TALK
+%%			Wed Nov 17 15:05:09 2004:  TB more changes for TALK
+%%			2014/01/10 Adaptations for Metalogue
+%%			2019/05/31 Adaptations for Embeddia
+%%			2020/05/18 Adaptations for ERIGrid 2.0 (TS)
+%%          2021/07/22 Adaptations for ERIGrid 2.0 periodic reporting (TS)
+%%			2022/03/10 Adaptations for HYPERRIDE periodic reporting (TS)
+
+%\usepackage{xstring}
+\usepackage{zref-totpages}
+\usepackage{fancyhdr}
+\usepackage{stringstrings}
+\usepackage{ifthen}
+\usepackage{amssymb}
+
+% table of content alias
+\newcommand{\maketoc}{
+	\thispagestyle{empty}\pagenumbering{roman}\tableofcontents\newpage\pagenumbering{arabic}
+}
+
+% redefine elements styles
+\@ifclassloaded{report}{
+	\renewcommand{\section}{\@startsection {section}{1}{\z@}%
+          {-3.5ex \@plus -1ex \@minus -.2ex}%
+          {2.3ex \@plus.2ex}%
+          {\normalfont\fontsize{18}{23}\sffamily\bfseries\color{hyperrideblue}}%
+	}
+
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+	          {-3.5ex \@plus -1ex \@minus -.2ex}%
+                  {2.3ex \@plus.2ex}
+		{\normalfont\fontsize{14}{18}\sffamily\bfseries\color{hyperrideblue}}}
+
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+	          {-3.5ex \@plus -1ex \@minus -.2ex}%
+                  {2.3ex \@plus.2ex}
+		{\normalfont\fontsize{12}{16}\sffamily\bfseries\color{hyperrideblue}}}
+
+% \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+             % {3.25ex \@plus1ex \ at minus.2ex}%
+             % {-1em}%
+             % {\normalfont\normalsize\sffamily\bfseries}}
+}
+
+%%% Deliverable information sheet.
+
+\newcommand{\GetDeliverableID}{%
+\capitalizewords[e]{\deliv@stitle}
+\alphabetic[e]{\thestring}
+\edef\deliv@captitle{\thestring}
+\testmatchingchar{\deliv@status}{1}{d}
+HYPERRIDE-\convertchar{\deliv@number}{.}{}-\noblanks{\deliv@captitle}-\deliv@status\ifmatchingchar{-\deliv@version}\else{}\fi
+%\IfBeginWith{\deliv@status}{d}{-\deliv@version}{}
+}
+
+% istdis project refs
+\newcommand{\istdis}{
+  {\fontsize{12}{15}\bf\color{hyperrideblue}Report Information}\\[1.5ex] 
+  \setlength{\parindent}{0pt}
+  \def\arraystretch{1.25}
+  \arrayrulecolor{hyperridegray}
+  {\fontsize{9}{11}\selectfont
+  \begin{tabular}[t]{!{\color{hyperridegray}\vrule}p{.25\linewidth}!{\color{hyperridegray}\vrule}p{.6885\linewidth}!{\color{hyperridegray}\vrule}}
+    \rowcolor{hyperridegray}\multicolumn{2}{c}
+    {\rule{0pt}{2.5ex}\color{white}\bf Document Administrative Information} \\
+    \rowcolor{white}
+    Project Acronym: & HYPERRIDE \\
+    \rowcolor{hyperridelightergray}
+    Project Number: & 957788 \\
+    \rowcolor{white}
+    Report Number: & \deliv@number\\
+    \rowcolor{hyperridelightergray}
+    Report Full Title: & \parbox{\linewidth}{\deliv@name} \\
+    \rowcolor{white}
+    Report Short Title: & \deliv@stitle \\
+    \rowcolor{hyperridelightergray}
+    Document Identifier: & \GetDeliverableID{} \\
+    \rowcolor{white}
+    Beneficiary in Charge: & \deliv@owner \\
+    \rowcolor{hyperridelightergray}
+    Report Version: & \deliv@version \\
+    \rowcolor{white}
+    Contractual Date: & \deliv@contrdate \\
+	\rowcolor{hyperridelightergray}
+    Report Submission Date: & \deliv@actdate \\
+    \rowcolor{white}
+%    Dissemination Level: & \deliv@disslevel \\
+%    \rowcolor{hyperridelightergray}
+%    Nature: & \deliv@type \\
+%    \rowcolor{white}
+    Lead Author(s): & \deliv@authors \\
+    \rowcolor{hyperridelightergray}
+    Co-author(s):& \deliv@FPauthors \\
+    \rowcolor{white}
+%	Keywords: & \deliv@keywords \\
+%    \rowcolor{hyperridelightergray}
+    Status: & \deliv@status@table \\
+    \hline
+  \end{tabular}
+}\\[3ex]
+}
+
+\newcommand{\istmakechangelog} {%
+  \InputIfFileExists {\jobname.chl}{}{%
+  \ClassWarning{h2020proposal}{Change log not complete yet. Recompile to include all data.}}%
+}%
+
+\newcommand{\writechlog}{
+	% create chlog table on auxiliary lwp file
+	\setcounter{@row}{0} \newwrite\chlogfile
+	\immediate\openout\chlogfile=\jobname.chl
+	\immediate\write\chlogfile{%
+		{\noexpand\fontsize{12}{15}\noexpand\bf\noexpand\color{hyperrideblue}Change Log}\noexpand\\[1.5ex] 
+		\noexpand\setlength{\noexpand\parindent}{0pt}
+		\noexpand\def\noexpand\arraystretch{1.00}
+		\noexpand\def\noexpand\clinecolor{hyperridegray}
+		\noexpand\begin{tabular}[t]{!{\noexpand\color{\noexpand\clinecolor}\noexpand\vrule}p{.12\noexpand\linewidth}!{\noexpand\color{\noexpand\clinecolor}\noexpand\vrule}p{.10\noexpand\linewidth}!{\noexpand\color{\noexpand\clinecolor}\noexpand\vrule}p{.3\noexpand\linewidth}!{\noexpand\color{\noexpand\clinecolor}\noexpand\vrule}p{.364\noexpand\linewidth}!{\noexpand\color{\noexpand\clinecolor}\noexpand\vrule}}
+			\noexpand\rowcolor{hyperridegray}
+			\noexpand\footnotesize\noexpand\rule{0pt}{2.5ex}\noexpand\color{white}\noexpand\bf Date &
+			\noexpand\footnotesize\noexpand\rule{0pt}{2.5ex}\noexpand\color{white}\noexpand\bf Version & 
+			\noexpand\footnotesize\noexpand\rule{0pt}{2.5ex}\noexpand\color{white}\noexpand\bf Author/Editor & 
+			\noexpand\footnotesize\noexpand\rule{0pt}{2.5ex}\noexpand\color{white}\noexpand\bf Summary of Changes Made \noexpand\arrayrulecolor{hyperridegray}\noexpand\def\noexpand\clinecolor{hyperridegray}\noexpand\\ \noexpand\hline}
+		\whiledo{\value{@row}<\value{@changecount}}{%
+			\stepcounter{@row}
+			\ifodd\value{@row}\def\shadeofgray{white}\else\def\shadeofgray{hyperridelightergray}\fi
+			\immediate\write\chlogfile{%
+				\noexpand\rowcolor{\shadeofgray}\noexpand\footnotesize\csname @changedate\arabic{@row}\endcsname &
+				\noexpand\footnotesize\csname @changeversion\arabic{@row}\endcsname &
+				\noexpand\footnotesize\csname @changeauthor\arabic{@row}\endcsname &
+				\noexpand\footnotesize\csname @changesummary\arabic{@row}\endcsname \noexpand\\
+			}
+		}
+	\immediate\write\chlogfile{\noexpand\hline \noexpand\end{tabular}}
+	\closeout\chlogfile
+}
+
+\AtEndDocument{%
+ \writechlog 
+  }
+
+\def\ProjectRefNo#1{\gdef\proj@ref@no{#1}}
+\def\ProjectFP#1{\gdef\proj@fp{#1}}
+\def\ProjectAcronym#1{\gdef\proj@acronym{#1}}
+\def\ProjectFullTitle#1{\gdef\proj@title{#1}}
+\def\ProjectInstrument#1{\gdef\proj@instrument{#1}}
+\def\ProjectStartDuration#1{\gdef\proj@start@duration{#1}}
+\def\Security#1{\gdef\deliv@security{#1}}
+\def\ContractualDate#1{\gdef\deliv@contrdate{#1}}
+\def\ActualDate#1{\gdef\deliv@actdate{#1}}
+\def\delivFrom#1{\gdef\deliv@from{#1}}
+\def\delivTo#1{\gdef\deliv@to{#1}}
+\def\delivNumber#1{\gdef\deliv@number{#1}}
+\def\delivName#1{\gdef\deliv@name{#1}}
+\def\doiNumber#1{\gdef\doi@number{#1}}
+\def\delivShortTile#1{\gdef\deliv@stitle{#1}}
+\def\delivType#1{\gdef\deliv@type{#1}}
+\def\delivStatus#1{%
+  %\StrLeft{#1}{1}[\firstchar]%
+  %\edef\temparg{\firstchar}%
+  \substring[e]{#1}{1}{2}
+  \def\temparg{\thestring}%
+  \edef\tempf{\detokenize{f}}% final
+  \edef\temps{\detokenize{s}}% submitted
+  \if\temparg\tempf%
+  {\gdef\deliv@status{final}%
+    \gdef\deliv@status@table{\underline{~~~} draft, \underline{\deliv@checkmark} final, \underline{~~~} submitted}}
+  \else %
+    \if\temparg\temps%
+     {\gdef\deliv@status{submitted}%
+       \gdef\deliv@status@table{\underline{~~~} draft, \underline{~~~} final, \underline{\deliv@checkmark} submitted}}
+     \else
+     {\gdef\deliv@status{draft}%
+       \gdef\deliv@status@table{\underline{\deliv@checkmark} draft, \underline{~~~} final, \underline{~~~} submitted}}
+     \fi
+  \fi%
+  % \ifthenelse{\equal{#1}{f}}%\or\equal{\lowercase{#1}}{\string final}}%
+  % {\gdef\deliv@status{final}%
+  %  \gdef\deliv@status@table{\_ draft, $\underline{\checkmark}$ final, \_ submitted (tick one)}}%
+  %  {\gdef\deliv@status{\lowercase{#1}}%
+  %   \gdef\deliv@status@table{$\underline{\checkmark}$ draft, \_ final, \_ submitted (tick one)}}%
+}
+\def\delivVersion#1{\gdef\deliv@version{#1}}
+\def\delivMonth#1{\gdef\deliv@month{#1}}
+\def\delivYear#1{\gdef\deliv@year{#1}}
+\def\delivDissLevel#1{\gdef\deliv@disslevel{#1}}
+
+\def\delivWP#1{\gdef\deliv@wp{#1}}
+\def\delivWPName#1{\gdef\deliv@wpname{#1}}
+\def\delivTask#1{\gdef\deliv@task{#1}}
+\def\delivResponsible#1{\gdef\deliv@owner{#1}}
+\def\delivOtherContributors#1{\gdef\deliv@others{#1}}
+\def\delivAuthor#1{\gdef\deliv@authors{#1}\author{#1}}
+\def\delivFPAuthor#1{\gdef\deliv@FPauthors{#1}\author{#1}}
+\def\delivProjectOfficer#1{\gdef\deliv@officer{#1}}
+\def\delivKeywords#1{\gdef\deliv@keywords{#1}}
+\def\delivAbstract#1{\gdef\deliv@abstract{#1}}
+\def\delivExecSummary#1{\gdef\deliv@abstract{#1}}
+\def\delivExecSummary#1{\gdef\deliv@abstract{#1}}
+
+\newcounter{@changecount}
+\setcounter{@changecount}{0}
+\newcounter{@row}
+\newcommand{\istChange}[4]{
+  \stepcounter{@changecount}%
+  \expandafter\xdef\csname%
+  @changedate\arabic{@changecount}\endcsname{#1}
+  \expandafter\xdef\csname%
+  @changeversion\arabic{@changecount}\endcsname{#2}
+  \expandafter\xdef\csname%
+  @changeauthor\arabic{@changecount}\endcsname{\detokenize{#3}}
+  \expandafter\xdef\csname%
+  @changesummary\arabic{@changecount}\endcsname{\detokenize{#4}}
+}
+
+%%% Headers and footers
+
+\renewcommand{\headrulewidth}{0pt}
+\lhead{\fancyplain{}{}}
+\chead{\fancyplain{}{
+	\begin{tabular}{m{0.40\linewidth} m{0.32\linewidth} m{0.25\linewidth}}
+		{\footnotesize Waterloo Aerial Robotics Group} & 
+		%\centering{\footnotesize{\deliv@stitle}} 
+		& 
+		\makebox[0.24\textwidth][r]{\includegraphics[width=0.40\linewidth]{graphics/warg-logo}} \\
+		\hline
+	\end{tabular}
+}}
+\rhead{\fancyplain{}{}}
+\lfoot{\fancyplain{}{}}
+\cfoot{\fancyplain{}{
+	\begin{tabular}{m{0.25\linewidth} m{0.47\linewidth} m{0.25\linewidth}}
+%		\hline
+		{\footnotesize} & 
+		\ifx\doi@number\empty
+		\else
+		\centering {\footnotesize doi:\href{https://doi.org/\doi@number}{\doi@number}} 
+		\fi
+		& 
+		\makebox[0.24\textwidth][r]{\footnotesize{\thepage{} of \ztotpages}} \\
+	\end{tabular}
+}}
+\rfoot{\fancyplain{}{}}
+
+% Some reasonable defaults. 
+
+\Security{??}
+\ContractualDate{}
+\ActualDate{\today{}}
+\delivType{??}
+
+\delivWP{??}
+\delivWPName{??}
+\delivResponsible{??}
+\delivOtherContributors{??}
+\delivAuthor{??}
+\delivProjectOfficer{??}
+\delivKeywords{??}
+\delivAbstract{??}
+
+\ProjectRefNo{957788}
+\ProjectAcronym{HYPERRIDE}
+\ProjectFullTitle{Hybrid Provision of Energy based on Reliability and Resiliency by Integration of Dc Equipment}
+\Security{Restricted}
+\ContractualDate{\_\_\_\_ \_\_\_\_\_ 202\_}
+\delivMonth{Month}
+\delivYear{202x}
+\ActualDate{\_\_\_\_\_\_ 202\_}
+\delivFrom{01/09/2022}
+\delivTo{10/01/2023}
+\delivNumber{Dn.n}
+\delivName{Waterloo Aerial Robotics Group 2023 Design Proposal}
+\delivShortTile{Student UAS Competition 2022-2023}
+\delivDissLevel{PP}
+\delivType{[Report, Prototype, Other]}
+\delivStatus{d}
+\delivWP{WPx} % Workpackage x
+\delivWPName{[Title as appears in DoA]} % WP name
+\delivResponsible{[Responsible partner]} 
+\delivOtherContributors{[List of partners contributed to the deliverable]} 
+\delivVersion{\today}
+\delivAuthor{[List of individuals contributed to the deliverable]}
+\delivFPAuthor{...}
+\doiNumber{}
+
+\delivOtherContributors{All partners}
+\delivProjectOfficer{Project officer}
+
+\delivKeywords{[List of free keywords relevant to the deliverable]}
+
+\delivDissLevel{CO}
+\delivTask{Tn.n}
+\delivVersion{0.0}
+
+\newcommand{\istTestDisseminationLevel}[1]{%
+  \ifthenelse{\equal{\deliv@disslevel}{#1}}
+  {~~\checkmark}
+  {}
+}
+
+%% Stuff for other than in the identification page
+
+\def\partners#1{\gdef\proj@partners{#1}}
+\def\webAddress#1{\gdef\proj@web{#1}}
+\def\principalContact#1{\gdef\proj@contact{#1}}
+\def\logo#1{\gdef\proj@logo{#1}}
+
+\endinput

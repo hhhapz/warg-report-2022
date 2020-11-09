@@ -1,0 +1,117 @@
+%% istcover.sty
+%%
+%% Cover page for HYPERRIDE deliverables (adapted from EMBEDDIA, TALK, FRACAS and TRINDI)
+%%
+%%
+%%			History:
+%%			03/21/94 - MP, created (from urcstitlepage.sty and
+%%					   DYANA titlepage)
+%%			03/27/94 - MP, added ftp directory and email address
+%%			03/28/94 - RC, added HCRC
+%%			20 April 98 -- RC, adapted to TRINDI
+%%			30 APRIL 98 -- RC, adapted distribution data
+%%			Thu Feb 24 17:54:25 2000 JC adapted to M-PIRO
+%%			Wed Apr	 5 16:51:40 2000 JC generalized for IST
+%%			Tue Dec	 4 10:22:54 2001 CM changed copyright date
+%%			Tue Nov 16 2004 OL changed copyright date, logos, etc for TALK
+%%			Wed Nov 17 14:36:44 2004 TB added empty pagestyle for overflow page
+%%										(deliverable identification sheet)
+%%			2019/05/31 Adaptations for Embeddia 
+%%			2020/05/18 Adaptations for ERIGrid 2.0 (TS)
+%%          2021/07/22 Adaptations for ERIGrid 2.0 periodic reporting (TS)
+%%			2022/03/10 Adaptations for HYPERRIDE periodic reporting (TS)
+%% $Id: istcover.sty,v 1.2 2007/01/05 12:05:33 olemon Exp $
+
+%%
+%% makefront
+%% Frontpage content
+%%
+\def\makefront{
+  \newpage
+  \newgeometry{top=8.5mm,left=8.5mm,right=15mm,bottom=-14mm}
+  % shadowed frame
+  \ThisCenterWallPaper{1}{graphics/warg-coverbkg}
+  %	\global\@topnum\z@ % prevents figures from going at top of page
+  \thispagestyle{empty} % so we get no page number on title page
+  \setcounter{footnote}{0}
+  
+  \begingroup
+  % \renewcommand{\shadowsize}{2pt}
+  % \renewcommand{\shadowsize}{1pt}
+  % \shadowbox{%
+  % \begin{minipage}{\textwidth}
+  % redefine \@makefnmark so footnote marks take zero space
+  % (this make centering look better)
+  \def\thefootnote{\fnsymbol{footnote}}
+  \def\@makefnmark{\hbox to 0pt{$^{\@thefnmark}$\hss}}
+  \null
+  
+  % Titles block
+  \vspace*{34mm}
+  \hspace*{14mm}
+  \begin{minipage}{.85\linewidth}
+	\begin{center}
+		{\fontsize{16}{20}\bf \color{hyperrideblue} Waterloo Aerial Robotics Group \\ Design of Urban Air Mobility System for Big City} \\[12.5ex]
+    	{\fontsize{14}{16} \bf \deliv@name} \\[2.5ex]
+    	{\fontsize{14}{16} \bf University of Waterloo} \\[12.5ex]    	
+    	{Presented for the 14th Aerial Evolution Association of Canada Student UAS Competition}
+    \end{center}
+  \end{minipage}
+
+%	\begin{textblock*}{0.85\linewidth}(2.50cm,24cm)	
+%		{\fontsize{9}{11}\selectfont
+%	  	\setlength{\parindent}{0pt}
+%		\def\arraystretch{1.25}			
+%		\arrayrulecolor{hyperridegray}
+%			\begin{tabular}[t]{!{\color{hyperridegray}\vrule}p{4em}!{\color{hyperridegray}\vrule}p{.8\linewidth}!{\color{hyperridegray}\vrule}p{2em}!{\color{hyperridegray}\vrule}}
+%				\rowcolor{hyperridegray}\multicolumn{3}{c}
+%				{\rule{0pt}{2.5ex}\color{white}\bf Dissemination Level \rule[-1ex]{0pt}{2.5ex}}
+%				\\
+%				\rowcolor{white}
+%				PU & Public & \istTestDisseminationLevel{PU} \\
+%				\rowcolor{hyperridelightergray}
+%				PP &  Restricted to other programme participants (including the
+%				Commission Services)
+%				& \istTestDisseminationLevel{PP} \\
+%				\rowcolor{white}
+%				RE &  Restricted to a group specified by the Consortium (including the Commission Services)
+%				& \istTestDisseminationLevel{RE} \\
+%				\rowcolor{hyperridelightergray}
+%				CO &
+%				Confidential, only for members of the Consortium (including the Commission Services)
+%				& \istTestDisseminationLevel{CO} \\
+%				\hline
+%			\end{tabular}
+%		}
+%	\end{textblock*}
+
+  \endgroup
+
+  \clearpage
+  \restoregeometry
+  % reset footnote counter
+  \setcounter{footnote}{0}
+  % clean up title page macros
+  % Not yet!
+  % \let\maketitle\relax
+  % \gdef\@thanks{}\gdef\@author{}\gdef\@title{}
+  % \gdef\@funding{}\gdef\@techrepdept{}\gdef\@techrepname{}\gdef\@techrepnum{}
+  % \let\thanks\relax
+
+  % margins
+}
+%end of makefront
+
+%%
+%% \makecover
+%% cover page (front + back)
+%%
+\def\makecover{
+	\makefront
+}
+
+\newcommand\Thickvrule[1]{%
+	\multicolumn{1}{!{\vrule width 2pt}c!{\vrule width 1pt}}{#1}%
+}
+
+\endinput
