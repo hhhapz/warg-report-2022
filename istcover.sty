@@ -28,6 +28,7 @@
 %%
 \def\makefront{
   \newpage
+  \fontfamily{phv}\selectfont
   \newgeometry{top=8.5mm,left=8.5mm,right=15mm,bottom=-14mm}
   % shadowed frame
   \ThisCenterWallPaper{1}{graphics/warg-coverbkg}
@@ -51,9 +52,16 @@
   \hspace*{14mm}
   \begin{minipage}{.85\linewidth}
 	\begin{center}
-		{\fontsize{16}{20}\bf \color{hyperrideblue} Waterloo Aerial Robotics Group \\ Design of Urban Air Mobility System for Big City} \\[12.5ex]
-    	{\fontsize{14}{16} \bf \deliv@name} \\[2.5ex]
-    	{\fontsize{14}{16} \bf University of Waterloo} \\[12.5ex]    	
+		{\fontsize{16}{20}\bf \color{hyperrideblue}
+		\fontfamily{phv}\selectfont
+
+		Waterloo Aerial Robotics Group \\ Design of Urban Air Mobility System for Big City} \\[12.5ex]
+
+    	{\fontsize{14}{16}
+			\bf \fontfamily{phv}\selectfont
+		 Waterloo Aerial Robotics Group 2023 Design Proposal} \\[2.5ex]
+    	{\fontsize{14}{16} \bf
+		\fontfamily{phv}\selectfont University of Waterloo} \\[12.5ex]    	
     	{Presented for the 14th Aerial Evolution Association of Canada Student UAS Competition}
     \end{center}
   \end{minipage}
