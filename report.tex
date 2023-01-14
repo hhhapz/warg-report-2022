@@ -13,13 +13,21 @@
 \usepackage{cleveref}
 \usepackage[printonlyused]{acronym}
 \usepackage{booktabs}
+\usepackage{multicol}
+\usepackage{mathptmx}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage[usestackEOL]{stackengine}
+\edef\tmp{\the\baselineskip}
+\setstackgap{L}{\tmp}
 
   \hyphenpenalty=5000
   \tolerance=1000
-
+  
 \hypersetup{
 	pdftitle={Design of Urban Air Mobility System for Big City},
 	pdfauthor={[Waterloo Aerial Robotics Group]},
+	linktoc=all,
 }
 
 \graphicspath{ {graphics/} }
@@ -82,23 +90,13 @@
 
 \clearpage
 \fancypagestyle{plain}{}
-
+    
 \settableofcontents
+    
+\fontfamily{ptm}\selectfont
 
-\fontfamily{garamondx}\selectfont
 
-\section{Preface}
-
-\textbf{Big City} has asked for bids to improve the efficiency and
-effectiveness of downtown passenger transit by developing a sub-scale UAMS
-prototype to meet specific mission requirements..
-
-The Waterloo Aerial Robotics Group proposes an innovative solution involving
-hybrid multirotor fixed wing aircraft that allow for efficient, stable long
-range flight while also mainting the maneuverability and compact
-takeoff/landing requirements mandated by Big City. The solution presented is
-capable of either fully autonomous flight with given flight plans, or remotely
-operated flight from a ground-based operator. 
+\input{sections/preface}
 
 \vspace{10mm}
 
@@ -109,22 +107,14 @@ operated flight from a ground-based operator.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
-\input{sections/introduction}
-\vspace{10mm}
-\input{sections/technical}
-\vspace{10mm}
-\input{sections/novelty}
-\vspace{10mm}
+\input{sections/analysis}
+\input{sections/overview}
+\input{sections/limits-capabilities}
+\input{sections/safety}
+\input{sections/autonomy}
+\input{sections/path-optimization}
+\input{sections/cv}
 \input{sections/project-management}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% References
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\vspace{10mm}
-
-\bibliography{literature/references}
-\bibliographystyle{apacite}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% List of Abbreviations

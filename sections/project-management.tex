@@ -1,51 +1,64 @@
 \clearpage
+
 \section{Project Management}
-\label{sec:technical}
+\label{sec:project-management}
 
-\subsection{Risk Assessment}
+\subsection{Deliverables and Timeline}
+\label{sec:timeline}
 
-\begin{table}[htpb]
-	\centering
-	\begin{tabular}{p{0.28\linewidth}  p{0.14\linewidth}  p{0.12\linewidth}
-		 p{0.36\linewidth} }
-
-		\textbf{Risk} &
-		\textbf{Likelihood} & \textbf{Severity} &
-		\textbf{Mitigation Technique} \\ \midrule
-
-	    Part delivery is much
-		slower, pushing back
-		testing and deadlines &
-		Very likely & Medium & % Likelihod + Severity
-		Continue to create and iterate on plans more often, test more parts of
-		the aircraft more often and with higher frequency. Book training
-		grounds more often, and create more precise deadlines with contingency
-		in mind. \\ \midrule
-
-	    Pilot failure during competition &
-		Likely & High & % Likelihod + Severity
-		Maximize opportunities for pilot training, ensure proper mechanisms for
-		communication between pilots and other ground crew, and ensure proper
-		briefing before flight. \\ \midrule
-
-	    Weather conditions render our aircraft or ground station inoperable &
-		Unlikely & Very high & % Likelihod + Severity
-		While designing and developing the aircraft, ensure testing in
-		unfavourable conditions for the aircraft, and providing pilots proper
-		briefing for flight conditions. \\ \midrule
-
-	\end{tabular}
-\end{table}
-
-\subsection{Preliminary Schedule and Timelines}
-
-\begin{figure}[h]
-	\caption{Competition Timeline}
-	\centering
-	\includegraphics[scale=0.3]{timeline}
+\begin{figure}[H]
+        \centering
+        \includegraphics[scale=0.155]{timeline}
 \end{figure}
 
+\clearpage
 
-\subsection{Budget}
+\subsection{Proposed Budget}
+\label{sec:budget}
 
-\todo{Include image of finalized budget chart from Confluence}
+\begin{table}[h]
+\centering
+\begin{tabular}{lrr}
+\color{hyperrideblue} \textbf{Item} &
+\color{hyperrideblue} \textbf{Amount} &
+\color{hyperrideblue} \textbf{Total Cost} \\ \midrule
+& & \\
+\color{hyperrideblue} \textbf{Aircraft} &  &  \\ \midrule
+Lift Motors & 4 & 600 \\
+Push Motor & 1 & 160 \\
+Servos & 8 & 80 \\
+Propellers & 10 & 300 \\
+Carbon Fibre Frame & 1 & 1300 \\
+ESCs & 8 & 840 \\
+Power Distribution Boards & 1 & 140 \\
+Batteries & 4 & 800 \\
+VTX & 1 & 80 \\
+VRX & 1 & 100 \\
+RFD900x & 2 & 300 \\
+Jetson and Carrier Board & 1 & 1800 \\
+Optical Flow Sensor & 1 & 40 \\
+CV Camera & 1 & 200 \\
+Pilot Camera & 2 & 100 \\
+GPS & 1 & 3000 \\
+ZeroPilot 3.0 & 1 & 145 \\
+& & \\
+\color{hyperrideblue} \textbf{Ground Station System} &  &  \\ \midrule
+Laptop & 1 & 1500 \\
+Video Relay Modules & 1 & 200 \\
+Cables, Connectors and Wiring &  & 300 \\
+Radio Controller & 2 & 600 \\
+\color{hyperrideblue} \textbf{Testing} &  &  \\
+Wood, Foam and Aluminum parts &  & 750 \\
+& & \\
+\color{hyperrideblue} \textbf{Miscellaneous Expenses} &  &  \\ \midrule
+Registration & & 4068 \\
+Travel &  & 800 \\
+Pilot Training & 2 & 500 \\
+Pilot License & 2 & 600 \\
+RPAS Registration & 1 & 15 \\
+& & \\ \midrule
+\color{hyperrideblue} \textbf{Total} & \textbf{} & \textbf{19318}
+\end{tabular}
+\caption{Budget for the testing and construction of Project: Icarus and demonstration in
+Alma}
+\end{table}

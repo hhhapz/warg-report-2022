@@ -81,7 +81,7 @@
 \input{istcover.sty}
 
 % toc design
-\def\settableofcontents{%
+\def\settableofcontents{
 \renewcommand{\cftsubsecfont}{\small}
 \renewcommand{\cftsecfont}{\normalsize}
 \renewcommand{\contentsname}{Table of Contents}
@@ -146,8 +146,8 @@
 \newcommand{\ignore}[1]{}
 
 % subsubsections processing
-\setcounter{secnumdepth}{3}	% numbering until subsubsections
-\setcounter{tocdepth}{2}	% toc depth
+\setcounter{secnumdepth}{4}	% numbering until paragraphs
+\setcounter{tocdepth}{4}	% toc depth
 
 \setcounter{topnumber}{20}
 \renewcommand{\topfraction}{.99}
@@ -163,7 +163,7 @@
 % font
 % \usepackage[scaled]{uarial}
 % \usepackage[scaled]{helvet}
-\renewcommand*\rmdefault{garamondx}
+\renewcommand*\rmdefault{ptm}
 \renewcommand*\sfdefault{phv}
 \renewcommand*{\familydefault}{\rmdefault}
 \usepackage[T1]{fontenc}

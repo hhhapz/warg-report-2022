@@ -1,0 +1,52 @@
+\section{Analysis of Mission Requirements}
+\label{sec:analysis}
+
+Big City has outlined two principal flight operations for the proposal:
+\begin{enumerate}
+    \item Task 1: Long Range Passenger Transport
+    \item Task 2: On Demand Passenger Transport
+\end{enumerate}
+Synthesizing the guidelines from both tasks leads to the following requirements:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lrl}
+\color{hyperrideblue} \textbf{Requirement} &
+\color{hyperrideblue} \textbf{Minimum Spec} &
+\color{hyperrideblue} \textbf{Reason}                   \\ \midrule
+    Maximum weight       & 5 kg           & Required to land on landing pad        \\
+PAX Light            & Yes, green    & Needed to indicate passengers on-board \\
+Max Flight Distance  & > 30 km       & 30km + re-route                        \\
+Max Flight Time      & 60 min        & Maximum time allowed to fly            \\
+Position Accuracy    & $\pm$ 0.1 m   & Accuracy needed to land on landing pad
+\end{tabular}
+\caption{Project Icarus core requirements}
+\end{table}
+
+\subsection{Examination of Alternate Solutions}
+\label{sec:alternate-solutions}
+
+The primary alternate solutions include a fixed-wing, multirotor, and Zeppelin based
+aircraft model. Each of these have significant drawbacks that cause them to be less
+than ideal solutions. For instance, fixed-wing systems require a long landing and 
+takeoff area, which is not ideal given the small-landing pad constraints of Big City, 
+and can become a safety hazard for civilians living near these landing pads, as well
+as the passengers on board the UAS.
+
+In contrast, a multirotor system can easily operate within constrained spaces for
+takeoff and landing. However, it cannot perform well in long-distance travel due to
+its increased power usage from more motors. Based on the requirements set by Big City,
+there will be significant distances to cover, reducing the feasibility and efficiency
+of this solution.
+
+Finally, a Zeppelin would not be usable due to its extremely slow nature and reliance
+on lighter-than-air gasses. Moreover, Zeppelins have a high number of failure points,
+as the likelihood of a gas leak is plausible. Furthermore, its slow nature reinforces
+the infeasibility for use as a public transportation system within a single city.
+
+From the perspective of flight software, ArduPilot is an alternate solution that has 
+been explored. It's integrated nature consisting of a flight controller, ground 
+station, firmware and standardized communication protocol (Mavlink), it is easy to
+integrate into a custom airframe. However, its use would be limited to predefined 
+protocols and limits the customizability of the onboard flight software and ground
+station.

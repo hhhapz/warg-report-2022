@@ -16,6 +16,9 @@
 \usepackage{stringstrings}
 \usepackage{ifthen}
 \usepackage{amssymb}
+\usepackage{tocloft}
+
+\setlength{\cftparaindent}{52pt}
 
 % table of content alias
 \newcommand{\maketoc}{
@@ -32,18 +35,18 @@
 
 \renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
 	          {-3.5ex \@plus -1ex \@minus -.2ex}%
-                  {2.3ex \@plus.2ex}
+                  {1.3ex \@plus.2ex}
 		{\normalfont\fontsize{14}{18}\sffamily\bfseries\color{hyperrideblue}}}
 
 \renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
 	          {-3.5ex \@plus -1ex \@minus -.2ex}%
-                  {2.3ex \@plus.2ex}
+                  {1.3ex \@plus.2ex}
 		{\normalfont\fontsize{12}{16}\sffamily\bfseries\color{hyperrideblue}}}
 
-% \renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
-             % {3.25ex \@plus1ex \ at minus.2ex}%
-             % {-1em}%
-             % {\normalfont\normalsize\sffamily\bfseries}}
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{\z@}%
+	          {-3.5ex \@plus -1ex \@minus -.2ex}%
+                  {1.3ex \@plus.8ex}
+		{\normalfont\fontsize{11}{16}\sffamily\bfseries\color{hyperrideblue}}}
 }
 
 %%% Deliverable information sheet.
