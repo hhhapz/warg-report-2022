@@ -3,35 +3,37 @@
 \subsection{Passenger Safety and Acceptance}
 \label{sec:safety}
 
-All passengers within the UAS are fully enclosed with the carbon fibre fuselage. They
-have individual seats as well as a secure four-point harnesses to keep them safely
-restrained during flight. All fuselage internals, including passenger seats, are 
-fastened in place. The primary hatch on the port side of the aircraft can be easily 
-opened and closed. Stairs are fixed to the inside of the door for safe boarding and 
-disembarking in case of emergencies.
+All passengers within the UAS are fully enclosed with the carbon fibre
+fuselage. They have individual seats as well as a secure four-point harnesses
+to keep them safely restrained during flight. All fuselage internals, including
+passenger seats, are fastened in place. The primary hatch on the port side of
+the aircraft can be easily opened and closed. Stairs are fixed to the inside of
+the door for safe boarding and disembarking in case of emergencies.
 
-In case of an electric failure within the aircraft (such as with the battery), the
-fuselage of the aircraft is sufficiently protected in order to keep the passengers
-safe from risk of fire and smoke.
+In case of an electric failure within the aircraft (such as with the battery),
+the fuselage of the aircraft is sufficiently protected in order to keep the
+passengers safe from risk of fire and smoke.
 
-All electronic components are placed within cases to prevent damage during maintenance
-and the unlikely event of rapid acceleration or deceleration. Connectors during flight
-are secured with adhesive such that they will not shift from vibrations while airborne.
-Externally, a custom arm/disarm PCBA is leveraged to ensure the ability to disable
-the board and electronics. The UAS flight controller features redundant power supplies,
-permitting swapping of batteries without letting the aircraft lose power.
+All electronic components are placed within cases to prevent damage during
+maintenance and the unlikely event of rapid acceleration or deceleration.
+Connectors during flight are secured with adhesive such that they will not
+shift from vibrations while airborne. Externally, a custom arm/disarm PCBA is
+leveraged to ensure the ability to disable the board and electronics. The UAS
+flight controller features redundant power supplies, permitting swapping of
+batteries without letting the aircraft lose power.
 
-All code running on any embedded component of Icarus strictly follows the MISRA C coding
-guidelines to ensure safety, portability, security, and reliability within their
-respective systems. The software has been rigorously tested on multiple airframes and
-platforms for validation and ensuring robustness. Furthermore, the flight software is
-designed with concurrency in mind, to prevent issues such as deadlocks, race conditions
-and starvation.
+All code running on any embedded component of Icarus strictly follows the MISRA
+C coding guidelines to ensure safety, portability, security, and reliability
+within their respective systems. The software has been rigorously tested on
+multiple airframes and platforms for validation and ensuring robustness.
+Furthermore, the flight software is designed with concurrency in mind, to
+prevent issues such as deadlocks, race conditions and starvation.
 
-In the case of autopilot malfunction, or the system detecting an unknown state, a 
-fail-safe mechanism transfers manual control back to a monitoring pilot on the ground.
-This ensures the pilot can take over full operation of the aircraft to prevent
-accidents and complete the flight. The aircraft also can be manually overridden into
-manual tele-operation by pilots on the ground at any time if necessary. These safety
-measures are designed to ensure the UAS can be operated safely, and with redundancy
-in mind under any unforeseen circumstances related to the safety of the aircraft.
+In the case of autopilot malfunction, or the system detecting an unknown state,
+a fail-safe mechanism transfers manual control back to a monitoring pilot on
+the ground. This ensures the pilot can take over full operation of the aircraft
+to prevent accidents and complete the flight. The aircraft also can be manually
+overridden into manual tele-operation by pilots on the ground at any time if
+necessary. These safety measures are designed to ensure the UAS can be operated
+safely, and with redundancy in mind under any unforeseen circumstances related
+to the safety of the aircraft.

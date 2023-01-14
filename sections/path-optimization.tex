@@ -1,29 +1,29 @@
 \subsection{Path Optimization Model and Process}
 \label{sec:path-optimization}
 
-Path Optimization is handled by IMACS on the ground, and then relayed to the aircraft
-using one of the command and control links. In each communication cycle, IMACS is
-updated on the position of the aircraft, and will always re-sequence the entire
-remainder of the waypoints to the UAS, with a special "starting" waypoint that
-contains the last location of the IMACS knows the aircraft to be in. This allows
-air-side path management to always know the closest path to re-join the sequence in case there's significant delay between transmission cycles.
+Path Optimization is handled by IMACS on the ground, and then relayed to the
+aircraft using one of the command and control links. In each communication
+cycle, IMACS is updated on the position of the aircraft, and will always
+re-sequence the entire remainder of the waypoints to the UAS, with a special
+"starting" waypoint that contains the last location of the IMACS knows the
+aircraft to be in. This allows air-side path management to always know the
+closest path to re-join the sequence in case there's significant delay between
+transmission cycles.
 
-Task one involves safely navigating around a restricted area while flying from 
-a starting point to a rendezvous point. To accomplish this task, a graph is created
-with the restricted area (with margin) as the vertex, along with the starting
-and rendezvous points. The graph is directed such that any straight path that
-intersects with the restricted area is not permitted. The edge weight represents the
-distance. Dijkstra's algorithm is then used to calculate the shortest path from the 
-starting point to the rejoin point.
+Task one involves safely navigating around a restricted area while flying from
+a starting point to a rendezvous point. To accomplish this task, a graph is
+created with the restricted area (with margin) as the vertex, along with the
+starting and rendezvous points. The graph is directed such that any straight
+path that intersects with the restricted area is not permitted. The edge weight
+represents the distance. Dijkstra's algorithm is then used to calculate the
+shortest path from the starting point to the rejoin point.
 
-Task two involves taxiing passengers at waypoints for fares, with the goal of profit
-maximization. To accomplish this, a reinforcement learning algorithm is employed. The
-algorithm takes into account the number of passengers and their pickup and drop-off
-locations, as well as the distance and time required to reach each waypoint. It then
-uses the reinforcement learning algorithm approach toe learn from past iterations
-and adjust the route in real-time to maximize profit. The algorithm takes into account
-factors such as fuel efficiency, time constraints, and adapting to any other
-restrictions that may be be present, in order to make it more efficient than
-traditional algorithms.
-
-<IMAGE?>
+Task two involves taxiing passengers at waypoints for fares, with the goal of
+profit maximization. To accomplish this, a reinforcement learning algorithm is
+employed. The algorithm takes into account the number of passengers and their
+pickup and drop-off locations, as well as the distance and time required to
+reach each waypoint. It then uses the reinforcement learning algorithm approach
+toe learn from past iterations and adjust the route in real-time to maximize
+profit. The algorithm takes into account factors such as fuel efficiency, time
+constraints, and adapting to any other restrictions that may be be present, in
+order to make it more efficient than traditional algorithms.
