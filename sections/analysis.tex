@@ -7,47 +7,61 @@ Big City has outlined two principal flight operations for the proposal:
     \item Task 2: On Demand Passenger Transport
 \end{enumerate}
 Synthesizing the guidelines from both tasks leads to the following requirements:
-
+{
+\renewcommand{\arraystretch}{1.1}
 \begin{table}[h]
 \centering
 \begin{tabular}{lrl}
 \color{hyperrideblue} \textbf{Requirement} &
-\color{hyperrideblue} \textbf{Minimum Spec} &
+\color{hyperrideblue} \textbf{Specification} &
 \color{hyperrideblue} \textbf{Reason}                   \\ \midrule
     Maximum weight       & 5 kg           & Required to land on landing pad        \\
-PAX Light            & Yes, green    & Needed to indicate passengers on-board \\
-Max Flight Distance  & > 30 km       & 30km + re-route                        \\
+	PAX Light            & 360\textdegree{}  visibility, green    & Needed to indicate passengers on-board \\
+Max Flight Distance  & > 30 km       & 30 km + re-route                        \\
 Max Flight Time      & 60 min        & Maximum time allowed to fly            \\
+Top Speed            & 70 km/h       & 30 km in 30-45 mins and takeoff/landing\\  
+Max Passengers       & 6 pax         & Task two limitation                    \\
+Max Flight Time      & 60 min        & Maximum time allowed to fly with buffer \\
 Position Accuracy    & $\pm$ 0.1 m   & Accuracy needed to land on landing pad
 \end{tabular}
 \caption{Project Icarus core requirements}
 \end{table}
+}
 
-\subsection{Examination of Alternate Solutions}
-\label{sec:alternate-solutions}
+\subsection{Examination of Solutions}
+\label{sec:solutions}
 
-The primary alternate solutions include a fixed-wing, multirotor, and Zeppelin
-based aircraft model. Each of these have significant drawbacks that cause them
-to be less than ideal solutions. For instance, fixed-wing systems require a
-long landing and takeoff area, which is not ideal given the small-landing pad
-constraints of Big City, and can become a safety hazard for civilians living
-near these landing pads, as well as the passengers on board the UAS.
+The primary alternate solutions include a fixed-wing, multirotor, and an
+airship based aircraft model. Each of these have drawbacks that cause them to
+be non-ideal solutions. For instance, fixed-wing systems require a long landing
+and takeoff area, which is not ideal given the small-landing pad constraints of
+Big City, and can become a safety hazard for civilians living near these
+landing pads, as well as the passengers on board the UAS.
 
 In contrast, a multirotor system can easily operate within constrained spaces
 for takeoff and landing. However, it cannot perform well in long-distance
-travel due to its increased power usage from more motors. Based on the
-requirements set by Big City, there will be significant distances to cover,
-reducing the feasibility and efficiency of this solution.
+travel due to its increased power usage from more motors, and lack of
+aerodynamic lift. Based on the requirements set by Big City, there will be
+significant distances to cover, reducing the feasibility and efficiency of this
+solution.
 
-Finally, a Zeppelin would not be usable due to its extremely slow nature and
-reliance on lighter-than-air gasses. Moreover, Zeppelins have a high number of
+Finally, an airship would not be usable due to its extremely slow nature and
+reliance on lighter-than-air gasses. Moreover, airships have a high number of
 failure points, as the likelihood of a gas leak is plausible. Furthermore, its
 slow nature reinforces the infeasibility for use as a public transportation
 system within a single city.
 
-From the perspective of flight software, ArduPilot is an alternate solution
-that has been explored. It's integrated nature consisting of a flight
-controller, ground station, firmware and standardized communication protocol
-(Mavlink), it is easy to integrate into a custom airframe. However, its use
-would be limited to predefined protocols and limits the customizability of the
-onboard flight software and ground station.
+From the perspective of flight software, ArduPilot is a popular alternative.
+Its integrated nature consisting of a flight controller, ground station,
+firmware and standardized communication protocol means it is easy to integrate
+into a custom airframe. However, use would be limited to predefined protocols
+which limits the customizability of the onboard flight software and ground
+station.
+
+Hence, considering the benefits and pitfalls of alternate solutions, a hybrid VTOL aircraft which can switch between multirotor mode for takeoff and landing
+to fixed-wing operation during long-distance and high speed travel was
+selected. Additionally, a custom flight controller with the capability to
+support the hybrid flight mode powers the aircraft which gives full control to
+implement and configure flight operations and autonomy. Similarly, a fully
+in-house ground station complements the flight control software in a way
+off-the-shelf components are unable to.

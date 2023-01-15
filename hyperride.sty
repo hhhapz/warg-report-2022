@@ -29,6 +29,7 @@
 	version={4.0},
 	imagewidth={6em},
 ]{doclicense}
+\frenchspacing
 
 \AtBeginDocument{\apptocmd{\thebibliography}{\csname phantomsection\endcsname\addcontentsline{toc}{section}{\bibname}}{}{}}
 % \input{a4wide.sty}
@@ -91,16 +92,18 @@
 \setlength{\cftbeforesecskip}{2mm}
 \setlength{\cftbeforesubsecskip}{0.5mm}
 \setlength{\cftsecindent}{0mm}
-\setlength{\cftsubsecindent}{4mm}
-\setlength{\cftsubsubsecindent}{8mm}
+\setlength{\cftsubsecindent}{3mm}
+\setlength{\cftsubsubsecindent}{6mm}
+\setlength{\cftparaindent}{9mm}
 \renewcommand{\cftsecpagefont}{\normalsize}
 \renewcommand{\cftsubsecpagefont}{\small}
 \renewcommand{\cftsecaftersnum}{.}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
 \renewcommand{\cftsubsecleader}{\small\cftdotfill{\cftsubsecdotsep}}
-\renewcommand{\cftsecdotsep}{0.5}
-\renewcommand{\cftsubsecdotsep}{0.5}
-\renewcommand{\cftsubsubsecdotsep}{0.5}
+\renewcommand{\cftsecdotsep}{2}
+\renewcommand{\cftsubsecdotsep}{2}
+\renewcommand{\cftsubsubsecdotsep}{2}
+\renewcommand{\cftparadotsep}{2}
 \addtolength{\cftsecnumwidth}{-2mm}
 \addtolength{\cftsubsecnumwidth}{-3mm}
 \addtolength{\cftsubsubsecnumwidth}{-5mm}

@@ -48,18 +48,18 @@ IMACS provides numerous distinct advantages over traditional Ground Control
 Software such as Mission Planner or QGround Control. One key feature is the
 ability to define a custom message protocol, which allows for greater
 flexibility and control over the aircraft's communication and navigation.
-Additionally, IMACS offers a more customizable approach to defining
-competition-specific aspects such as waypoints and overall path. This gives the
-pilot significantly more control over the precise flight, which helps improve
-efficiency during flight as well as the ability to divert in the case of an
-emergency. The user interface of IMACS is designed with Project: Icarus in
-mind, providing a simplified and user-friendly interface.
+Additionally, IMACS offers a more customizable approach to defining pre-defined
+aspects such as waypoints and overall path. This gives the pilot significantly
+more control over the precise flight, which helps improve efficiency during
+flight as well as the ability to divert in the case of an emergency. The user
+interface of IMACS is designed with Project: Icarus in mind, providing a
+simplified and user-friendly interface.
 
 \subsubsection{Flight Compute}
 \label{sec:flight-compute}
 
-Flight computer and avionics is all handled on-board the STM32L5 based
-ZeroPilot 3.0 PCB. WARG has decided to pair the "LaminarOS" operation system
+Flight compute and avionics is all handled on-board the STM32L5 based
+ZeroPilot 3.0 PCB. WARG has decided to pair the "LaminarOS" operating system
 with the 3rd major revision of ZeroPilot software. The custom software and
 firmware stack allows the use of a significantly lower power flight stack on an
 L5 chip (compared to traditional F4, F7 or H7 chips in commercially available
@@ -87,7 +87,7 @@ STM32's HAL.
 
 \paragraph{ZeroPilot Software 3.0}
 
-ZeroPilot runs on top of LaminarOS, and starts on book with the \textit{System
+ZeroPilot runs on top of LaminarOS, and starts on boot with the \textit{System
 Manager} state machine, which handles the drone operating state. This includes:
 
 \begin{itemize}
@@ -97,8 +97,8 @@ Manager} state machine, which handles the drone operating state. This includes:
 	\item \textbf{Disarm}: UAS is disarmed and in low power mode. Flight plans
 		can be sequenced.
 
-	\item \textbf{Ground Operations}: UAS is operating and moving, but no the
-		ground
+	\item \textbf{Ground Operations}: UAS is fully powered on and operational,
+		but on the ground.
 
 	\item \textbf{Flight}: Aircraft is fully armed and capable of pursuing any
 		action in the decision tree

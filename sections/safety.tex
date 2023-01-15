@@ -11,23 +11,23 @@ the aircraft can be easily opened and closed. Stairs are fixed to the inside of
 the door for safe boarding and disembarking in case of emergencies.
 
 In case of an electric failure within the aircraft (such as with the battery),
-the fuselage of the aircraft is sufficiently protected in order to keep the
-passengers safe from risk of fire and smoke.
+the fuselage of the aircraft is sufficiently protected through insulation in
+order to keep the passengers safe from risk of fire and smoke.
 
 All electronic components are placed within cases to prevent damage during
 maintenance and the unlikely event of rapid acceleration or deceleration.
 Connectors during flight are secured with adhesive such that they will not
-shift from vibrations while airborne. Externally, a custom arm/disarm PCBA is
-leveraged to ensure the ability to disable the board and electronics. The UAS
-flight controller features redundant power supplies, permitting swapping of
-batteries without letting the aircraft lose power.
+shift from vibrations while airborne. Externally, a custom arm/disarm circuit
+board is leveraged to ensure the ability to disable the board and electronics.
+The UAS flight controller features redundant power supplies, permitting
+battery change without powering down the aircraft.
 
 All code running on any embedded component of Icarus strictly follows the MISRA
-C coding guidelines to ensure safety, portability, security, and reliability
-within their respective systems. The software has been rigorously tested on
-multiple airframes and platforms for validation and ensuring robustness.
-Furthermore, the flight software is designed with concurrency in mind, to
-prevent issues such as deadlocks, race conditions and starvation.
+C coding standards for developing safety-critical systems. The software has
+been rigorously tested on multiple airframes, simulators, and platforms for
+validation and ensuring robustness. Furthermore, the flight software is
+designed with concurrency in mind, to prevent issues such as deadlocks, race
+conditions and starvation.
 
 In the case of autopilot malfunction, or the system detecting an unknown state,
 a fail-safe mechanism transfers manual control back to a monitoring pilot on

@@ -21,7 +21,7 @@ the UAS switches into tele-operated control to land or reroute as required.
 \begin{figure}[H]
         \centering
         \includegraphics[width=\textwidth]{landing-pad}
-		\caption{Landing pad detection algorithm overlayed over CV camera
+		\caption{Landing pad detection algorithm overlayed on CV camera
 		footage}
 \end{figure}
 
@@ -42,6 +42,6 @@ to tele-operated control to land or reroute as required.
 The NVIDIA Jetson and ZeroPilot's PM submodule communicate during flight to
 ensure the aircraft is accurately aligned with the landing pad. TM uses LOS'
 UART driver to facilitate this communication. Messages from ZP to the Jetson
-include telemetry and movement requests. Jetson to ZP messages include relative
+include telemetry and movement commands. Jetson to ZP messages include relative
 movement commands for search execution and, when the aircraft confirms that it
 is safe to land, a landing initiation request to PM.

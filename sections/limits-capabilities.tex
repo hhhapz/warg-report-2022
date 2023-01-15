@@ -1,56 +1,59 @@
 \subsection{Operational Limits and Capabilities}
 \label{sec:limits-and-capabilities}
 
-{
-\renewcommand{\arraystretch}{2.0}
 \begin{table}[H]
 \parbox[t][][t]{.45\linewidth}{
 \centering
+{
+\renewcommand{\arraystretch}{2.0}
 \begin{tabular}{r|l}
 \color{hyperrideblue} \textbf{Aircraft} & \textbf{} \\
-Max Weight & 12 kg \\
+Max Weight & 8 kg \\
 Dimensions & 2.4m x 1.4m x 1.1m \\
 Lift Props & 17" x 6.5" \\
 Push Props & 16" x 8" \\
-Motors (Lift, Push) & T-Motor V505, AT4130 \\
-Max Speed & > 80 km/h \\
+Lift Motor & T-Motor V505 \\
+Push Motor & T-Motor AT4130 \\
+Max Speed & 80 km/h \\
 Flight Time & 50 min \\
 Hover Time & 30 min \\
 Nav-Lights & YES \\
-\multicolumn{1}{l|}{} &  \\
+			&               \\
 \color{hyperrideblue} \textbf{Software} &  \\
 ESC Protocol & PWM, DSHOT 150/300 \\
 \Longunderstack[r]{Supported Comms\\Protocols} & \Longunderstack[l]{UART, I2C, SPI, PPM,\\Mavlink, USB, JTAG} \\
-Chip Refresh & 110 MHz \\
 GPS Accuracy & $\pm$ 1.0 m (Horiz) \\
 ADS-B? & NO \\
 Flight Mode & GPS, Attitude \\
 
 \end{tabular}
 }
+}
 \hfill
 \parbox[t][][t]{.45\linewidth}{
 \centering
+{
+\renewcommand{\arraystretch}{1.93}
 \begin{tabular}{r|l}
 \color{hyperrideblue} \textbf{Weather} & \textbf{} \\
 Operating Temp & -10C to +40C \\
-Max Wind & 80 km/h \\
+Max Wind & 45 km/h \\
 Max Precipitation & 60 mm/h \\
 \multicolumn{1}{l|}{} &  \\
 \color{hyperrideblue} \textbf{Communication} &  \\
-\Longunderstack[r]{Max Transmit Power\\(Telem, Vid)} & \Longunderstack[l]{1 W\\800 mw\\} \\
-GS Dev. & 30\textdegree H, 30\textdegree V \\
+\Longunderstack[r]{Max Transmit Power\\(Telemetry, Video)} & \Longunderstack[l]{1 W\\800 mw\\} \\
+Antenna Deviation & 30\textdegree H, 30\textdegree V \\
 Max Range & > 8 km \\
-Horiz Resolution & 4\textdegree \\
+Horizontal Resolution & 4\textdegree \\
 Video & 480TVL Analog \\
-Operational Freq & 915, 1258/1280, 5800 MHz \\
+\Longunderstack[r]{Operational\\Frequencies} & \Longunderstack[l]{915, 125/1280,\\5800 MHz} \\
 Latency & 10ms E2E \\
 \multicolumn{1}{l|}{} &  \\
 \color{hyperrideblue} \textbf{Battery} &  \\
-Voltage & 44.4V (12S) \\
 Type & Li-Po \\
+Voltage & 44.4V (12S) \\
 Capacity & 10000 mAh \\
 \end{tabular}
 }
-\end{table}
 }
+\end{table}
