@@ -10,27 +10,51 @@
 		\textbf{Likelihood} & \textbf{Severity} &
 		\textbf{Mitigation Technique} \\ \midrule
 
-	    Part delivery is much
-		slower, pushing back
-		testing and deadlines &
+		Part delivery is much slower, pushing back testing and deadlines. &
 		Very likely & Medium & % Likelihod + Severity
 		Continue to create and iterate on plans more often, test more parts of
 		the aircraft more often and with higher frequency. Book training
 		grounds more often, and create more precise deadlines with contingency
 		in mind. \\ \midrule
 
-	    Pilot failure during competition &
+		Pilot failure during competition. &
 		Likely & High & % Likelihod + Severity
 		Maximize opportunities for pilot training, ensure proper mechanisms for
 		communication between pilots and other ground crew, and ensure proper
 		briefing before flight. \\ \midrule
 
-	    Weather conditions render our aircraft or ground station inoperable &
+		Image recognition failure: The landing pad algorithm fails
+		to identify the correct landing pad. & Likely & Low &
+		Both ZeroPilot and IMACS have been in development with the possible
+		chance of error in mind, and pilots are prepared to take over to
+		complete the flight if required. \\ \midrule
+
+		Software failure: The aircraft autopilot fails to operate autonomously
+		to complete the flight. &
+		Unlikely & High & % Likelihod + Severity
+		Manual pilot control will resume for the remainder of the flight, or
+		until the autopilot system is operable. In case of failure, manual
+		piloting and navigation will be required. \\ \midrule
+
+
+	    Weather conditions render our aircraft or ground station inoperable. &
 		Unlikely & Very high & % Likelihod + Severity
 		While designing and developing the aircraft, ensure testing in
 		unfavourable conditions for the aircraft, and providing pilots proper
 		briefing for flight conditions. \\ \midrule
 
+		Mechanical failure with control surfaces or motors &
+		Very Unlikely & High &
+		Depending on during which phase of flight this occurs, the
+		severity of risk can change. During cruise, attentive pilots can
+		switch to multirotor flight and abort the flight with a safe landing.
+		During take-off and landing, the window for recovery is extremely low
+		and the potential for aircraft damage is likely. Sufficient testing of
+		servos and control surfaces will take place before every flight. \\
+		\midrule
+
 	\end{tabular}
+	\caption{Potential risk that may affect the ability to compete, and
+	measures in place to mitigate the effects}
 \end{table}
 

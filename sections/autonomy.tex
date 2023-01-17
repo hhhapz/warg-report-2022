@@ -107,10 +107,9 @@ Manager} state machine, which handles the drone operating state. This includes:
 		exit from this without restarting.
 \end{itemize}
 
-
 \begin{figure}[H]
         \centering
-        \includegraphics[scale=0.15]{sm-arch}
+        \includegraphics[width=\textwidth]{zp-arch}
         \caption{\textit{System Manager}'s state machine decision tree}
 \end{figure}
 
@@ -124,31 +123,21 @@ incredibly portable since they have a common interface to SM.
 
 \textit{Attitude Manager} (AM) is an event loop which handles the attitude
 control of the aircraft by running a series of finely-tuned closed-loop control
-algorithms on a simplified state-space model. This allows AM to handle
-real-time changes in the aircraft's control surfaces, or changes to the balance
-of the aircraft. The use of a proprietary state-space model also means that any
-aircraft can be modelled in a linear relation to each actuator, allowing for
-great adaptability between different airframes or airframe configurations. The
-closed-loop controls algorithms run at a fixed 100 Hz, based on a movement
-vector received from either the pilot or \textit{Path Manager}.
+algorithms on a simplified state-space model. This means that AM is able to
+handle real-time changes to aircraft conditions for a variety of airframes,
+since any airframe can be interpreted by our algorithm. The closed loop
+controls algorithms run at a fixed 100 Hz, based on a setpoint from Path Manager
+or the pilot.
 
 \textit{Path Manager} (PM) is a state machine that sequences commands on the
-fly to waypoints, takeoff, or land autonomously. PM will retrieve instructions
-and the aircraft's current position data from SM. PM will then pass ascent and
-descent velocity targets along to AM to use accordingly. PM uses a list of
-waypoints, given by SM, as well as the aircraft's current position, to
-calculate the required movement vector and heading that will allow the UAS to
-fly to the next waypoint. It performs these calculations and sends the
-resulting data to AM for each waypoint within the list. If there is a need to
-reroute, this list will be updated and sent to PM for it to update its
-calculations.
+fly to waypoints, takeoff, or land autonomously. PM continually receives
+instructions, current position data, and a list of waypoints from SM. Using a
+modified adaptive pure pursuit algorithm, PM calculates the required movement
+vector and heading which is sent to AM at 100Hz.
+
 
 \textit{Telemetry Manager} (TM) is an event loop that handles all software I/O
 on the aircraft. TM is responsible for communication with the Jetson as well as
-the ground station. TM interfaces with LOS' UART driver for communication with
-the Jetson and LOS' RFD900x driver for sending messages to and from the ground.
-The Lightweight Communications and Marshalling (LCM) code generator is used to
-generate C++ code for each type of message payload as well as helper functions
-for message serialization. On each loop, TM will read incoming data from SM and
-assemble message structs to send to the appropriate device. It then marshals
-the structs to bytes and uses LOS to interface with the corresponding device.
+the ground station. TM interfaces with LOS' UART driver which uses the
+Lightweight Communications and Marshalling (LCM) standard C++ for each message
+payload.

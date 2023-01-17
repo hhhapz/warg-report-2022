@@ -15,13 +15,12 @@ Synthesizing the guidelines from both tasks leads to the following requirements:
 \color{hyperrideblue} \textbf{Requirement} &
 \color{hyperrideblue} \textbf{Specification} &
 \color{hyperrideblue} \textbf{Reason}                   \\ \midrule
-    Maximum weight       & 5 kg           & Required to land on landing pad        \\
+    Maximum weight       & 15 kg           & Required to land on landing pad        \\
 	PAX Light            & 360\textdegree{}  visibility, green    & Needed to indicate passengers on-board \\
-Max Flight Distance  & > 30 km       & 30 km + re-route                        \\
+Max Flight Distance  & > 30 km       & 30 km + re-routing distance            \\
 Max Flight Time      & 60 min        & Maximum time allowed to fly            \\
 Top Speed            & 70 km/h       & 30 km in 30-45 mins and takeoff/landing\\  
-Max Passengers       & 6 pax         & Task two limitation                    \\
-Max Flight Time      & 60 min        & Maximum time allowed to fly with buffer \\
+ Passengers       &    6 pax  & Task two limitation                    \\
 Position Accuracy    & $\pm$ 0.1 m   & Accuracy needed to land on landing pad
 \end{tabular}
 \caption{Project Icarus core requirements}
@@ -39,24 +38,32 @@ Big City, and can become a safety hazard for civilians living near these
 landing pads, as well as the passengers on board the UAS.
 
 In contrast, a multirotor system can easily operate within constrained spaces
-for takeoff and landing. However, it cannot perform well in long-distance
+for takeoff and landing. However, they cannot perform well in long-distance
 travel due to its increased power usage from more motors, and lack of
 aerodynamic lift. Based on the requirements set by Big City, there will be
 significant distances to cover, reducing the feasibility and efficiency of this
 solution.
 
 Finally, an airship would not be usable due to its extremely slow nature and
-reliance on lighter-than-air gasses. Moreover, airships have a high number of
-failure points, as the likelihood of a gas leak is plausible. Furthermore, its
-slow nature reinforces the infeasibility for use as a public transportation
-system within a single city.
+reliance on lighter-than-air gasses. Moreover, airships have a higher
+probability of catastrophic failure. Furthermore, it's design is more condusive
+to low-speed travel rather than rapid point-to-point transportation as
+requested by Big City. 
 
-From the perspective of flight software, ArduPilot is a popular alternative.
-Its integrated nature consisting of a flight controller, ground station,
-firmware and standardized communication protocol means it is easy to integrate
-into a custom airframe. However, use would be limited to predefined protocols
-which limits the customizability of the onboard flight software and ground
-station.
+From the perspective of flight software, ArduPilot is a popular solution. Its
+integrated nature consisting of a flight controller, groundstation, firmware,
+and standardized communication protocol (Mavlink) means that it is easy to
+integrate into a custom airframe, but it's use would be limited by predefined
+protocols and parameters. Not only does this heavily limit the customizability
+of the onboard flight software and ground station, it also adds significant
+overhead to all systems
+
+Path optimization for task 2 requires a solution on a variant on the Vehicle
+Routing Problem (VRP). Determining an exact optimal solution for VRP is
+NP-hard, which is therefore costly to compute and scales poorly even with path
+pruning. Instead, a metaheuristic algorithm is used, as these can find
+solutions that approach the optimum with computation that scales more
+efficiently.
 
 Hence, considering the benefits and pitfalls of alternate solutions, a hybrid VTOL aircraft which can switch between multirotor mode for takeoff and landing
 to fixed-wing operation during long-distance and high speed travel was
@@ -64,4 +71,4 @@ selected. Additionally, a custom flight controller with the capability to
 support the hybrid flight mode powers the aircraft which gives full control to
 implement and configure flight operations and autonomy. Similarly, a fully
 in-house ground station complements the flight control software in a way
-off-the-shelf components are unable to.
+off-the-shelf components are unable.
